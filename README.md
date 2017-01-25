@@ -17,3 +17,12 @@ It will create a configuration file for running gunicorn that is run from a virt
 It will create a configuration file for supervisord to run the gunicorn app and monitor it.
 
 It will create a configuration file for nginx using a virtual named host. All requests (that is not static) is passed on to the gunicorn unix socket.
+
+All that is left to do, is to fine tune the config files, and create links:
+
+```
+conf/<appname>-supervisord.conf -> /etc/supervisor/conf.d/
+conf/<appname>-nginx.conf -> /etc/nginx/conf.d/
+```
+
+Usually, nginx config file is fined tuned to point the media and static files to the correct paths.
