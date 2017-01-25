@@ -1,0 +1,39 @@
+upstream ${APPNAME}_server {
+    server unix:${BASEDIR}${APPNAME}/run/${APPNAME}.sock fail_timeout=0;
+}
+
+server {
+    listen 80 deferred;
+    server_name ${SERVERNAME};
+
+    client_max_body_size 4G;
+
+    access_log ${BASEDIR}${APPNAME}/logs/nginx-access.log;
+    error_log ${BASEDIR}${APPNAME}/logs/nginx-error.log;
+    
+    location /static/ {
+         alias ${BASEDIR}${APPNAME}/static/;
+    }
+
+    location /media/ {
+         alias ${BASEDIR}${APPNAME}/media/;
+    }
+
+    location / {
+         proxy_set_header X-Forwarded-For $$proxy_add_x_forwarded_for;
+         proxy_set_header Host $$http_host;
+
+         proxy_redirect off;
+
+         if (!-f $$request_filename) {
+             proxy_pass http://${APPNAME}_server;
+             break;
+         }
+    }
+
+    error_page 500 502 503 504 /500.html;
+    location = /500.html {
+         root ${BASEDIR}${APPNAME}/static/;
+    }
+
+}

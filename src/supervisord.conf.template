@@ -1,0 +1,6 @@
+[program:${APPNAME}]
+directory=${DJANGODIR}
+command=${BASEDIR}.virtualenvs/${APPNAME}/bin/gunicorn ${APPNAME}.wsgi -c ${BASEDIR}${APPNAME}/conf/${APPNAME}-gunicorn.conf
+user=django
+stdout_logfile=${BASEDIR}${APPNAME}/logs/gunicorn.log
+redirect_stderr=True
