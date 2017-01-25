@@ -16,4 +16,4 @@ It will create a configuration file for running gunicorn that is run from a virt
 
 It will create a configuration file for supervisord to run the gunicorn app and monitor it.
 
-It will create a configuration file for nginx using a virtual named host. All requests (that is not static) is passed on the gunicorn unix socket.
+It will create a configuration file for nginx using a virtual named host. All requests (that is not static) is passed on to the gunicorn unix socket.
