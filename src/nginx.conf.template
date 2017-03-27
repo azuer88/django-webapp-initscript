@@ -3,7 +3,7 @@ upstream ${APPNAME}_server {
 }
 
 server {
-    listen 80 deferred;
+    listen 80;
     server_name ${SERVERNAME};
 
     client_max_body_size 4G;
