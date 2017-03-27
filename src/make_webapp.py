@@ -164,7 +164,7 @@ def find_manage_py(appname):
                   print "manage.py is at %s" % root
                   return root
 
-    return None
+    return os.path.join(curdir, appname, '')
 
 
 def main():
