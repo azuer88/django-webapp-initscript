@@ -6,6 +6,10 @@ server {
     listen 80;
     server_name ${SERVERNAME};
 
+    # listen 443 ssl;
+    # ssl_certificate ${BASEDIR}${APPNAME}/conf/ssl/${SERVERNAME}.yyyymmdd.pem;
+    # ssl_certificate_key ${BASEDIR}${APPNAME}/conf/ssl/${SERVERNAME}.yyyymmdd.key;
+
     client_max_body_size 4G;
 
     access_log ${BASEDIR}${APPNAME}/logs/nginx-access.log;
@@ -37,3 +41,12 @@ server {
     }
 
 }
+
+#server {
+#    listen 80;
+#    server_name ${SERVERNAME};
+#
+#    location / {
+#        rewrite ^ https://$server_name$request_uri permanent;
+#    }
+#}
