@@ -52,6 +52,8 @@ coverage.xml
 # Django stuff:
 *.log
 local_settings.py
+db.sqlite3
+
 
 # Flask stuff:
 instance/
@@ -87,3 +89,15 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# NodeJS modules
+node_modules/
+
+# webpack compiled settings
+webpack-stats.json
+# webpack bundles
+src/assets/bundles/
+src/static/
+
+# webstorm config
+.idea/
